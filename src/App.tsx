@@ -29,7 +29,7 @@ export default function App(){
  const pts=[];for(let j=0;j<180;j++){const a=j/180*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*w.orbit,0,Math.sin(a)*w.orbit))}
  const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x46516f,transparent:true,opacity:.5}));scene.add(line);orbitLines.push(line);
  if(w.name==='Saturn'){const ring=new THREE.Mesh(new THREE.RingGeometry(w.size*1.25,w.size*1.9,64),new THREE.MeshBasicMaterial({color:0xcab990,side:THREE.DoubleSide,transparent:true,opacity:.7}));ring.rotation.x=-Math.PI/2.45;mesh.add(ring)}
- if(w.name==='Earth')mesh.add(new THREE.Mesh(new THREE.SphereGeometry(w.size*1.03,28,20),new THREE.MeshBasicMaterial({color:0xb8e7ff,transparent:true,opacity:.12,wireframe:true}));});
+ if(w.name==='Earth')mesh.add(new THREE.Mesh(new THREE.SphereGeometry(w.size*1.03,28,20),new THREE.MeshBasicMaterial({color:0xb8e7ff,transparent:true,opacity:.12,wireframe:true})));});
  let frame=0,drag=false,px=0,py=0,rot=0,tilt=.55,raf=0;const el=renderer.domElement;
  const down=(e:PointerEvent)=>{drag=true;px=e.clientX;py=e.clientY;el.setPointerCapture(e.pointerId)};
  const move=(e:PointerEvent)=>{if(!drag)return;rot+=(e.clientX-px)*.006;tilt=Math.max(.12,Math.min(1.25,tilt+(e.clientY-py)*.003));px=e.clientX;py=e.clientY};
